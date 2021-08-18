@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <title>Temperature Converter | Useful Web Apps</title>
+    <meta charset="UTF-8" />
+  </head>
+
+  <body>
+    <div id="app">
+      <div id="errorDiv"></div>
+      <img
+        src="img/therm-icon.png"
+        width="50px"
+        alt="thermometer"
+        id="therm-icon"
+      />
+      <h1 id="heading">TEMPERATURE CONVERTER</h1>
+
+      <form class="wrap" id="converter">
+        <div class="input-group">
+          <div class="form-input">
+            <span>From</span>
+            <label for="from-unit">
+              <select id="from-select">
+                <option value="from-c">Celsius °C</option>
+                <option value="from-f">Fahrenheit °F</option>
+                <option value="from-k">Kelvin K</option>
+              </select>
+            </label>
+            <input type="number" id="from-unit" placeholder="Insert value" />
+          </div>
+
+          <img
+            src="img/convert-symbol.png"
+            alt="convert symbol"
+            width="50px"
+            height="50px"
+            id="convert-symbol"
+          />
+
+          <div class="form-input">
+            <span>To</span>
+            <label for="to-unit">
+              <select id="to-select">
+                <option value="to-c">Celsius °C</option>
+                <option value="to-f">Fahrenheit °F</option>
+                <option value="to-k">Kelvin K</option>
+              </select>
+            </label>
+            <input
+              type="text"
+              id="to-unit"
+              placeholder="Result will display here"
+              disabled
+            />
+          </div>
+        </div>
+        <input type="submit" id="convert" value="Convert" />
+      </form>
+    </div>
+
+    <script src="js/index.js"></script>
+  </body>
+</html>
