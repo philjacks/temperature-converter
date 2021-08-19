@@ -12,6 +12,8 @@ const input = document.getElementById("from-unit");
 const outSelect = document.getElementById("to-select");
 const output = document.getElementById("to-unit");
 
+outSelect.value = `out-fahrenheit`
+
 // CONVERSION FUNCTIONS
 const celsiusToFahrenheit = (numVal) => {
   numVal = parseFloat(numVal);
@@ -146,6 +148,6 @@ refresh.addEventListener('click', () => {
   output.innerHTML = `Result displays here`
   output.style.color = `grey`
   inSelect.value = `in-celsius`
-  outSelect.value = `out-celsius`
+  outSelect.value = `out-fahrenheit`
 
 })
