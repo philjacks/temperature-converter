@@ -37,7 +37,7 @@ const celsiusToKelvin = (numVal) => {
     setTimeout(removeError, 3000);
   }
 };
-const FahrenheitToCelsius = (numVal) => {
+const fahrenheitToCelsius = (numVal) => {
   numVal = parseFloat(numVal);
   output.innerHTML = numVal - 32 / 1.8;
   output.style.color = `black`
@@ -59,7 +59,7 @@ const fahrenheitToKelvin = (numVal) => {
     setTimeout(removeError, 3000);
   }
 };
-const KelvinToCelsius = (numVal) => {
+const kelvinToCelsius = (numVal) => {
   numVal = parseFloat(numVal);
   output.innerHTML = numVal - 273.15;
   output.style.color = `black`
@@ -70,7 +70,7 @@ const KelvinToCelsius = (numVal) => {
     setTimeout(removeError, 3000);
   }
 };
-const KelvinToFahrenheit = (numVal) => {
+const kelvinToFahrenheit = (numVal) => {
   numVal = parseFloat(numVal);
   output.innerHTML = (numVal - 273.15) * 1.8 + 32;
   output.style.color = `black`
@@ -95,7 +95,7 @@ const runConversion = () => {
     inSelect.value === `in-fahrenheit` &&
     outSelect.value === `out-celsius`
   ) {
-    FahrenheitToCelsius(input.value);
+    fahrenheitToCelsius(input.value);
   } else if (
     inSelect.value === `in-fahrenheit` &&
     outSelect.value === `out-kelvin`
@@ -105,12 +105,12 @@ const runConversion = () => {
     inSelect.value === `in-kelvin` &&
     outSelect.value === `out-celsius`
   ) {
-    KelvinToCelsius(input.value);
+    kelvinToCelsius(input.value);
   } else if (
     inSelect.value === `in-kelvin` &&
     outSelect.value === `out-fahrenheit`
   ) {
-    KelvinToFahrenheit(input.value);
+    kelvinToFahrenheit(input.value);
   } else {
     output.innerHTML = `Check units`;
     showError(`Please check your units`);
