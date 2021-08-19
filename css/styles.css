@@ -156,6 +156,7 @@ body #app .wrap .input-group .form-input input {
   width: 80%;
   -webkit-box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
           box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  text-align: center;
 }
 
 body #app .wrap .input-group .form-input input::-webkit-input-placeholder {
