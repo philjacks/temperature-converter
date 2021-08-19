@@ -2,6 +2,7 @@
 const form = document.getElementById("converter");
 const convertIcon = document.getElementById("convert-symbol");
 const error = document.getElementById("error-div");
+const refresh = document.getElementById('refresh')
 
 // 'FROM' ELEMENTS
 const inSelect = document.getElementById("from-select");
@@ -15,6 +16,7 @@ const output = document.getElementById("to-unit");
 const celsiusToFahrenheit = (numVal) => {
   numVal = parseFloat(numVal);
   output.innerHTML = numVal * 1.8 + 32;
+  output.style.color = `black`
 
   if (isNaN(numVal)) {
     output.innerHTML = `Not a number`;
@@ -25,6 +27,7 @@ const celsiusToFahrenheit = (numVal) => {
 const celsiusToKelvin = (numVal) => {
   numVal = parseFloat(numVal);
   output.innerHTML = numVal + 273.15;
+  output.style.color = `black`
 
   if (isNaN(numVal)) {
     output.innerHTML = `Not a number`;
@@ -35,6 +38,7 @@ const celsiusToKelvin = (numVal) => {
 const FahrenheitToCelsius = (numVal) => {
   numVal = parseFloat(numVal);
   output.innerHTML = numVal - 32 / 1.8;
+  output.style.color = `black`
 
   if (isNaN(numVal)) {
     output.innerHTML = `Not a number`;
@@ -45,6 +49,7 @@ const FahrenheitToCelsius = (numVal) => {
 const fahrenheitToKelvin = (numVal) => {
   numVal = parseFloat(numVal);
   output.innerHTML = (numVal - 32) / 1.8 + 273.15;
+  output.style.color = `black`
 
   if (isNaN(numVal)) {
     output.innerHTML = `Not a number`;
@@ -55,6 +60,7 @@ const fahrenheitToKelvin = (numVal) => {
 const KelvinToCelsius = (numVal) => {
   numVal = parseFloat(numVal);
   output.innerHTML = numVal - 273.15;
+  output.style.color = `black`
 
   if (isNaN(numVal)) {
     output.innerHTML = `Not a number`;
@@ -65,6 +71,7 @@ const KelvinToCelsius = (numVal) => {
 const KelvinToFahrenheit = (numVal) => {
   numVal = parseFloat(numVal);
   output.innerHTML = (numVal - 273.15) * 1.8 + 32;
+  output.style.color = `black`
 
   if (isNaN(numVal)) {
     output.innerHTML = `Not a number`;
@@ -111,9 +118,13 @@ const runConversion = () => {
 
 const showError = (message) => {
   error.innerHTML = message;
+  error.style.display = `block`
 };
 const removeError = () => {
+  error.style.display = `none`
   error.innerHTML = ``;
+
+
 };
 
 // 'CONVERT' BUTTON LISTENER
@@ -128,3 +139,13 @@ form.addEventListener("submit", (e) => {
 
   e.preventDefault();
 });
+
+// REFRESH
+refresh.addEventListener('click', () => {
+  input.value = ``
+  output.innerHTML = `Result displays here`
+  output.style.color = `grey`
+  inSelect.value = `in-celsius`
+  outSelect.value = `out-celsius`
+
+})
