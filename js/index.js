@@ -1,59 +1,130 @@
 // ELEMENT SELECTORS
-const form = document.getElementById('converter')
-const convertIcon = document.getElementById('convert-symbol')
+const form = document.getElementById("converter");
+const convertIcon = document.getElementById("convert-symbol");
+const error = document.getElementById("error-div");
 
 // 'FROM' ELEMENTS
-const fromSelect = document.getElementById('from-select')
-const fromInput = document.getElementById('from-unit')
+const inSelect = document.getElementById("from-select");
+const input = document.getElementById("from-unit");
 
 // 'TO' ELEMENTS
-const toSelect = document.getElementById('to-select')
-const toInput = document.getElementById('to-input')
-
-// TEMP UNIT VARIABLES
-const c
-const f
-const k
+const outSelect = document.getElementById("to-select");
+const output = document.getElementById("to-unit");
 
 // CONVERSION FUNCTIONS
-const fromCelsius = (value) => {
-  if (fromSelect === `Celsius °C` && toSelect === `Fahrenheit °F`) {
-    // Run C to F conversion formula
-  } else if (fromSelect === `Celsius °C` && toSelect === `Kelvin K`) {
-    // Run C to K conversion formula
+const celsiusToFahrenheit = (numVal) => {
+  numVal = parseFloat(numVal);
+  output.innerHTML = numVal * 1.8 + 32;
+
+  if (isNaN(numVal)) {
+    output.innerHTML = `Not a number`;
+    showError(`Only numbers can be converted`);
+    setTimeout(removeError, 3000);
   }
-}
+};
+const celsiusToKelvin = (numVal) => {
+  numVal = parseFloat(numVal);
+  output.innerHTML = numVal + 273.15;
 
-const fromFahrenheit = (value) => {
-  if (fromSelect === `Fahrenheit °F` && toSelect === `Celsius °C`) {
-    // Run F to C conversion formula
-  } else if (fromSelect === `Fahrenheit °F` && toSelect === `Kelvin K`) {
-    // Run F to K conversion formula
+  if (isNaN(numVal)) {
+    output.innerHTML = `Not a number`;
+    showError(`Only numbers can be converted`);
+    setTimeout(removeError, 3000);
   }
-}
+};
+const FahrenheitToCelsius = (numVal) => {
+  numVal = parseFloat(numVal);
+  output.innerHTML = numVal - 32 / 1.8;
 
-const fromKelvin = (value) => {
-  if (fromSelect === `Kelvin K` && toSelect === `Celsius °C`) {
-    // Run K to C conversion formula
-  } else if (fromSelect === `Kelvin K` && toSelect === `Fahrenheit °F`) {
-    // Run K to F conversion formula
+  if (isNaN(numVal)) {
+    output.innerHTML = `Not a number`;
+    showError(`Only numbers can be converted`);
+    setTimeout(removeError, 3000);
   }
-}
+};
+const fahrenheitToKelvin = (numVal) => {
+  numVal = parseFloat(numVal);
+  output.innerHTML = (numVal - 32) / 1.8 + 273.15;
 
+  if (isNaN(numVal)) {
+    output.innerHTML = `Not a number`;
+    showError(`Only numbers can be converted`);
+    setTimeout(removeError, 3000);
+  }
+};
+const KelvinToCelsius = (numVal) => {
+  numVal = parseFloat(numVal);
+  output.innerHTML = numVal - 273.15;
 
-// CONVERT BUTTON LISTENER
-form.addEventListener('submit', (e) => {
-  convertIcon.classList.add('rotate')
+  if (isNaN(numVal)) {
+    output.innerHTML = `Not a number`;
+    showError(`Only numbers can be converted`);
+    setTimeout(removeError, 3000);
+  }
+};
+const KelvinToFahrenheit = (numVal) => {
+  numVal = parseFloat(numVal);
+  output.innerHTML = (numVal - 273.15) * 1.8 + 32;
 
+  if (isNaN(numVal)) {
+    output.innerHTML = `Not a number`;
+    showError(`Only numbers can be converted`);
+    setTimeout(removeError, 3000);
+  }
+};
+
+// CHECK SELECT VALUES AND RUN DESIRED FORMULA
+const runConversion = () => {
+  if (inSelect.value === `in-celsius` && outSelect.value === `out-fahrenheit`) {
+    celsiusToFahrenheit(input.value);
+  } else if (
+    inSelect.value === `in-celsius` &&
+    outSelect.value === `out-kelvin`
+  ) {
+    celsiusToKelvin(input.value);
+  } else if (
+    inSelect.value === `in-fahrenheit` &&
+    outSelect.value === `out-celsius`
+  ) {
+    FahrenheitToCelsius(input.value);
+  } else if (
+    inSelect.value === `in-fahrenheit` &&
+    outSelect.value === `out-kelvin`
+  ) {
+    fahrenheitToKelvin(input.value);
+  } else if (
+    inSelect.value === `in-kelvin` &&
+    outSelect.value === `out-celsius`
+  ) {
+    KelvinToCelsius(input.value);
+  } else if (
+    inSelect.value === `in-kelvin` &&
+    outSelect.value === `out-fahrenheit`
+  ) {
+    KelvinToFahrenheit(input.value);
+  } else {
+    output.innerHTML = `Check units`;
+    showError(`Please check your units`);
+    setTimeout(removeError, 3000);
+  }
+};
+
+const showError = (message) => {
+  error.innerHTML = message;
+};
+const removeError = () => {
+  error.innerHTML = ``;
+};
+
+// 'CONVERT' BUTTON LISTENER
+form.addEventListener("submit", (e) => {
+  setTimeout(runConversion, 1000);
+
+  convertIcon.classList.add("rotate");
   const removeRotateClass = () => {
-    convertIcon.classList.remove('rotate')
-  }
+    convertIcon.classList.remove("rotate");
+  };
+  setTimeout(removeRotateClass, 1000);
 
-  setTimeout(removeRotateClass, 1000)
-
-  e.preventDefault()
-})
-
-
-
-
+  e.preventDefault();
+});

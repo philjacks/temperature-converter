@@ -9,7 +9,7 @@
 
   <body>
     <div id="app">
-      <div id="errorDiv"></div>
+      <div id="error-div"></div>
       <img
         src="img/therm-icon.png"
         width="50px"
@@ -24,12 +24,17 @@
             <span>From</span>
             <label for="from-unit">
               <select id="from-select">
-                <option value="from-c">Celsius °C</option>
-                <option value="from-f">Fahrenheit °F</option>
-                <option value="from-k">Kelvin K</option>
+                <option value="in-celsius">Celsius °C</option>
+                <option value="in-fahrenheit">Fahrenheit °F</option>
+                <option value="in-kelvin">Kelvin K</option>
               </select>
             </label>
-            <input type="number" id="from-unit" placeholder="Insert value" />
+            <input
+              type="number"
+              id="from-unit"
+              placeholder="Insert value"
+              step="any"
+            />
           </div>
 
           <img
@@ -44,17 +49,12 @@
             <span>To</span>
             <label for="to-unit">
               <select id="to-select">
-                <option value="to-c">Celsius °C</option>
-                <option value="to-f">Fahrenheit °F</option>
-                <option value="to-k">Kelvin K</option>
+                <option value="out-celsius">Celsius °C</option>
+                <option value="out-fahrenheit">Fahrenheit °F</option>
+                <option value="out-kelvin">Kelvin K</option>
               </select>
             </label>
-            <input
-              type="text"
-              id="to-unit"
-              placeholder="Result will display here"
-              disabled
-            />
+            <p id="to-unit">Result displays here</p>
           </div>
         </div>
         <input type="submit" id="convert" value="Convert" />
